@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow" data-publish>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Астрея · Фитнес-студия</title>
+<meta name="description" content="Групповые и персональные занятия, пилатес, фитнес-йога, массаж и аппаратная косметология. Абонементы от 600 ₽, запись на удобное время.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Фитнес-студия в Бердске: тренировки, йога, массаж">
+<meta property="og:description" content="Групповые и персональные занятия, пилатес, фитнес-йога, массаж и аппаратная косметология. Абонементы от 600 ₽, запись на удобное время.">
+<meta property="og:image" content="assets/hero.webp">
+<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%276%27 y=%276%27 width=%2720%27 height=%2720%27 rx=%275%27 fill=%27%233f9d5a%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --c-canvas: #f6f4ef; --c-surface: #ffffff; --c-ink: #1f2a1e; --c-ink-soft: #6b7265; --c-accent: #3f9d5a; --c-accent-ink: #0d2413; --c-accent-deep: #2b7a42; --f-display: "Rubik", "Arial", system-ui, sans-serif; --f-text: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; --h1k: 0.66; }
+</style>
+<link rel="stylesheet" href="style-prod.css">
+<style>
+/* ---- виджет-сотрудник + ИИ-продавец: отвечаем сразу, круглосуточно ------- */
+.agent-wrap { position: fixed; right: clamp(12px, 2vw, 28px); bottom: clamp(12px, 2.4vh, 28px); z-index: 60; display: grid; justify-items: end; gap: 12px; }
+.agent { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--c-ink);
+  border: 0; background: none; padding: 0; font: inherit; cursor: pointer; }
+.agent__bubble { display: grid; gap: 2px; padding: 10px 16px; border-radius: 16px 16px 4px 16px;
+  background: var(--c-surface); box-shadow: 0 10px 30px rgb(0 0 0 / .18), 0 0 0 1px rgb(0 0 0 / .05);
+  font-family: var(--f-text); line-height: 1.25; max-width: 15rem;
+  opacity: 0; transform: translateY(8px); animation: agent-in .5s 1.4s cubic-bezier(.2,.7,.2,1) forwards; }
+.agent__bubble b { font-size: .95rem; font-weight: 700; }
+.agent__bubble span { font-size: .8rem; color: var(--c-ink-soft); }
+.agent__photo { position: relative; flex: none; width: 64px; height: 64px; border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--c-accent), 0 10px 26px rgb(0 0 0 / .35); transition: transform .2s ease-out; }
+.agent__photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+.agent__photo::before { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--c-accent);
+  animation: agent-pulse 2.6s ease-out infinite; pointer-events: none; }
+.agent__photo i { position: absolute; right: 1px; bottom: 1px; width: 15px; height: 15px; border-radius: 50%;
+  background: #2fbf5b; box-shadow: 0 0 0 3px var(--c-surface); }
+.agent:hover .agent__photo, .agent:focus-visible .agent__photo { transform: scale(1.05); }
+.agent:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 4px; border-radius: 40px; }
+@keyframes agent-in { to { opacity: 1; transform: none; } }
+@keyframes agent-pulse { 0% { opacity: .8; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.35); } }
+.agent__photo b { display: none; position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%); padding: 1px 6px; border-radius: 8px;
+  background: var(--c-accent); color: var(--c-accent-ink); font: 700 10px/1.4 var(--f-text); white-space: nowrap; }
+/* ---- окно чата ИИ-продавца (стиль Noya) ----------------------------------- */
+.aichat { width: min(360px, calc(100vw - 24px)); border-radius: 16px; overflow: hidden;
+  background: var(--c-surface); box-shadow: 0 24px 60px rgb(0 0 0 / .28), 0 0 0 1px rgb(0 0 0 / .06);
+  display: flex; flex-direction: column; transform-origin: bottom right; animation: chat-in .25s cubic-bezier(.2,.7,.2,1); }
+.aichat[hidden] { display: none; }
+@keyframes chat-in { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+.aichat__head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--c-ink); color: var(--c-canvas); }
+.aichat__head img { border-radius: 50%; box-shadow: 0 0 0 2px var(--c-accent); }
+.aichat__who { display: grid; gap: 1px; min-width: 0; flex: 1; }
+.aichat__who b { font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.aichat__who span { font-size: .78rem; color: color-mix(in srgb, var(--c-canvas) 78%, transparent); display: inline-flex; align-items: center; gap: 6px; }
+.aichat__who i { width: 8px; height: 8px; border-radius: 50%; background: #2fbf5b; display: inline-block; }
+.aichat__close { border: 0; background: none; color: color-mix(in srgb, var(--c-canvas) 78%, transparent); font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
+.aichat__close:hover { color: var(--c-surface); background: rgb(255 255 255 / .12); }
+.aichat__body { display: grid; gap: 8px; padding: 14px; background: var(--c-canvas); max-height: 320px; overflow-y: auto; }
+.msg { max-width: 84%; padding: 9px 13px; border-radius: 14px; font-size: .88rem; line-height: 1.45;
+  opacity: 0; transform: translateY(8px); animation: msg-in .3s cubic-bezier(.2,.7,.2,1) forwards; overflow-wrap: anywhere; }
+@keyframes msg-in { to { opacity: 1; transform: none; } }
+.msg--bot { justify-self: start; background: var(--c-surface); border: 1px solid color-mix(in srgb, var(--c-ink) 14%, transparent); border-bottom-left-radius: 4px; }
+.msg--user { justify-self: end; background: var(--c-accent); color: var(--c-accent-ink); border-bottom-right-radius: 4px; font-weight: 600; }
+.aichat__typing { justify-self: start; display: inline-flex; gap: 4px; padding: 12px 14px; background: var(--c-surface); border: 1px solid color-mix(in srgb, var(--c-ink) 14%, transparent); border-radius: 14px; border-bottom-left-radius: 4px; margin: 0 14px 8px; width: max-content; }
+.aichat__typing[hidden] { display: none; }
+.aichat__typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--c-ink-soft); animation: typing 1.1s infinite; }
+.aichat__typing span:nth-child(2) { animation-delay: .18s; }
+.aichat__typing span:nth-child(3) { animation-delay: .36s; }
+@keyframes typing { 0%, 60%, 100% { transform: none; opacity: .4; } 30% { transform: translateY(-4px); opacity: 1; } }
+.aichat__input { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid color-mix(in srgb, var(--c-ink) 14%, transparent); background: var(--c-surface); align-items: center; }
+.aichat__input input { flex: 1; min-width: 0; border: 0; background: none; font: 500 .88rem/1.4 var(--f-text); color: var(--c-ink); padding: 6px 4px; }
+.aichat__input input:focus-visible { outline: none; }
+.aichat__input button { border: 0; background: var(--c-accent); color: var(--c-accent-ink); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: default; opacity: .75; }
+.aichat__note { margin: 0; padding: 8px 14px 10px; font-size: .72rem; color: var(--c-ink-soft); background: var(--c-surface); border-top: 1px dashed color-mix(in srgb, var(--c-ink) 14%, transparent); }
+@media (max-width: 640px) {
+  .agent-wrap { bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .agent__bubble { display: none; }
+  .agent__photo { width: 54px; height: 54px; }
+  .agent__photo i { right: -2px; bottom: auto; top: 0; width: 13px; height: 13px; }
+  .agent__photo b { display: block; }
+  .aichat { width: calc(100vw - 24px); }
+  .aichat__body { max-height: 40vh; }
+}
+.agent-wrap { transition: opacity .25s ease-out, transform .25s ease-out; }
+.agent-wrap.is-away { opacity: 0; transform: translateY(10px); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .agent__bubble { animation: none; opacity: 1; transform: none; } .agent__photo::before { animation: none; opacity: 0; } }
+/* ---- правки Юрия 08.10.2026 --------------------------------------------- */
+/* заголовок первого экрана: слова не переносятся и не рвутся, слова с дефисом не разрываются */
+.s-hero h1 { hyphens: none; -webkit-hyphens: none; overflow-wrap: normal; word-break: normal; }
+.s-hero h1 .nb { white-space: nowrap; }
+/* верхняя шапка (имя компании, телефон, кнопка) крупнее на 25 % */
+.s-bar { padding-top: 12px; padding-bottom: 12px; }
+.s-bar__brand { font-size: 1.25rem; min-height: 48px; }
+.s-bar__tel { font-size: 1.2rem; }
+.s-bar .s-btn--sm { font-size: 1.05rem; min-height: 46px; }
+@media (max-width: 640px) {
+  .s-bar__brand { font-size: 1.15rem; }
+  .s-bar .s-btn--sm { font-size: .98rem; min-height: 44px; padding: 0 1em; }
+}
+</style>
+</head>
+<body class="s-prod" id="top" data-wa="" data-tg="" data-max="">
+<header class="s-bar" data-s-bar>
+  <a class="s-bar__brand" href="#top"><i aria-hidden="true"></i>Астрея</a>
+  <div class="s-bar__right">
+    <a class="s-bar__tel" href="tel:+79232387361">+7 (923) 238-73-61</a>
+    <a class="s-btn s-btn--sm" href="#widget">Записаться</a>
+  </div>
+</header>
+<main>
+  <section class="s-hero">
+    <div class="s-hero__text">
+      <p class="s-eyebrow">Фитнес, йога, пилатес, массаж · Бердск</p>
+      <h1><span class="nb">Фитнес-студия</span> в Бердске: тренировки, йога, массаж</h1>
+      <p class="s-lead">Групповые и персональные занятия, пилатес, фитнес-йога, массаж и аппаратная косметология. Абонементы от 600 ₽, запись на удобное время.</p>
+      <ul class="s-ticks"><li>Групповые и персональные тренировки</li><li>Пилатес, фитнес-йога, танцы, силовые</li><li>Массаж и аппаратная косметология</li></ul>
+      <p class="s-rating"><b>4,3</b> на Яндекс.Картах · 6 отзывов</p>
+      <figure class="s-hero__photo"><img class="" src="assets/hero.webp" alt="Зал фитнес-студии «Астрея» с синими акцентными стенами" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+    </div>
+    <div class="s-hero__widget" id="widget"><form class="s-widget" data-s-booking data-days="7" data-closed="" data-slots="09:00,10:00,11:00" data-message="Здравствуйте! Хочу записаться на занятия: {услуга}, {день} в {время}. Вопросы и пожелания напишу ниже." onsubmit="return false">
+      <h2 class="s-widget__title">Запись</h2>
+      <fieldset><legend>Услуга</legend>
+        <div class="s-chips s-chips--col"><label class="s-chip s-chip--row"><input type="radio" name="svc" value="0" data-name="Разовое занятие" data-price="600" data-from="" data-min="" checked><span>Разовое занятие</span><b>600 ₽</b></label><label class="s-chip s-chip--row"><input type="radio" name="svc" value="1" data-name="Абонемент на 8 занятий в месяц" data-price="3000" data-from="" data-min=""><span>Абонемент на 8 занятий в месяц</span><b>3 000 ₽</b></label><label class="s-chip s-chip--row"><input type="radio" name="svc" value="2" data-name="Персональная тренировка" data-price="1500" data-from="" data-min=""><span>Персональная тренировка</span><b>1 500 ₽</b></label><label class="s-chip s-chip--row"><input type="radio" name="svc" value="3" data-name="Массаж 2 часа" data-price="3000" data-from="" data-min=""><span>Массаж 2 часа</span><b>3 000 ₽</b></label><label class="s-chip s-chip--row"><input type="radio" name="svc" value="4" data-name="RF-лифтинг лица и тела" data-price="850" data-from="" data-min=""><span>RF-лифтинг лица и тела</span><b>850 ₽</b></label></div>
+      </fieldset>
+      <fieldset><legend>День</legend><div class="s-chips" data-s-days></div></fieldset>
+      <fieldset><legend>Время</legend><div class="s-chips" data-s-times></div></fieldset>
+      <div class="s-bubble" aria-live="polite"><span class="s-bubble__label">Что назвать по телефону</span><p data-s-bubble></p></div>
+      <div class="s-send">
+        <a class="s-btn s-btn--wide" href="tel:+79232387361">Позвонить и записаться</a>
+        
+      </div>
+      <p class="s-send__note" data-s-copied hidden>Текст скопирован – вставьте его в чат.</p>
+      
+    </form></div>
+    <figure class="s-hero__bg" aria-hidden="true"><img class="" src="assets/hero.webp" alt="Зал фитнес-студии «Астрея» с синими акцентными стенами" decoding="async" style="object-position:50% 50%" fetchpriority="high"></figure>
+  </section>
+
+  
+
+  <section class="s-section s-reveal" id="prices">
+    <header class="s-section__head"><h2>Цены</h2><p>Цены на абонементы и услуги студии. Подберём подходящий вариант при записи.</p></header>
+    <div class="s-board"><div class="s-board__group">
+      <h3 class="s-board__title">Абонементы</h3>
+      <ul class="s-board__list">
+        <li class="s-board__row"><span class="s-board__name">Разовое занятие</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">600 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Абонемент на 4 занятия в месяц</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">1 800 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Абонемент на 8 занятий в месяц</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">3 000 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Абонемент на 12 занятий в месяц</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">3 800 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Абсолют (безлимитный)</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">5 500 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Семейный абонемент</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">5 500 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Полугодовой абсолют</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">14 500 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Годовой абсолют</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">26 000 ₽</span></li>
+      </ul>
+    </div>
+<div class="s-board__group">
+      <h3 class="s-board__title">Персональные тренировки и массаж</h3>
+      <ul class="s-board__list">
+        <li class="s-board__row"><span class="s-board__name">Персональная тренировка</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">1 500 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Массаж 1 час</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">1 500 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Массаж 2 часа</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">3 000 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Кедровая бочка и травяной чай</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">600 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Кедровая бочка и массаж</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">1 200 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">LPG-массаж</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">6 000 ₽</span></li>
+      </ul>
+    </div>
+<div class="s-board__group">
+      <h3 class="s-board__title">Аппаратная косметология</h3>
+      <ul class="s-board__list">
+        <li class="s-board__row"><span class="s-board__name">RF-лифтинг лица и тела</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">850 ₽</span></li>
+        <li class="s-board__row"><span class="s-board__name">Кавитация тела</span><span class="s-board__dots" aria-hidden="true"></span><span class="s-board__price">690 ₽</span></li>
+      </ul>
+    </div></div>
+    <p class="s-note">Не нашли нужную услугу? Напишите или позвоните, расскажем и поможем выбрать абонемент.</p>
+  </section>
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head"><h2>Как начать заниматься</h2></header>
+    <ol class="s-steps">
+      <li class="s-steps__item"><span class="s-steps__n">01</span><h3>Записались на время</h3><p>В форме выше, по телефону или в мессенджере.</p></li>
+      <li class="s-steps__item"><span class="s-steps__n">02</span><h3>Пришли на занятие</h3><p>Ждём вас по адресу: Бердск, Промышленный пер., 2А.</p></li>
+      <li class="s-steps__item"><span class="s-steps__n">03</span><h3>Подобрали программу</h3><p>Инструктор учтёт ваши цели, уровень и самочувствие.</p></li>
+      <li class="s-steps__item"><span class="s-steps__n">04</span><h3>Занимаетесь и отдыхаете</h3><p>Тренировки, массаж и релакс в удобное время.</p></li>
+    </ol>
+  </section>
+
+  <section class="s-photos s-reveal" aria-label="Фото"><figure><img class="" src="assets/entrance.webp" alt="Вход в фитнес-студию «Астрея» в Бердске" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption>Вход в студию</figcaption></figure><figure><img class="" src="assets/hall.webp" alt="Зал для групповых занятий с фитболами" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption>Зал для занятий</figcaption></figure><figure><img class="" src="assets/massage.webp" alt="Кабинет массажа и кедровой бочки" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption>Кабинет массажа</figcaption></figure></section>
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head"><h2>Что здесь есть</h2></header>
+    <ul class="s-promises">
+      <li><h3>Групповые занятия</h3><p>Пилатес, фитнес-йога, танцы и силовые тренировки, занятия на каждый день.</p></li>
+      <li><h3>Персональный подход</h3><p>Подбираем план занятий под ваши цели, уровень и самочувствие.</p></li>
+      <li><h3>Массаж и релакс</h3><p>Ручной и аппаратный массаж, кедровая бочка, LPG.</p></li>
+      <li><h3>Всё под рукой</h3><p>Инвентарь и всё необходимое для занятий есть в студии.</p></li>
+    </ul>
+  </section>
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head s-section__head--reviews"><h2>Отзывы с Яндекс.Карт</h2><p class="s-reviews__rating"><span class="s-reviews__num">4,3</span><span class="s-reviews__stars" style="--r: 4.3" aria-label="рейтинг 4,3 из 5"></span><span class="s-reviews__count">6 отзывов</span><a class="s-reviews__all" href="https://yandex.ru/maps/org/astreya/1065426228/reviews/" target="_blank" rel="noopener">Читать все отзывы на Яндекс.Картах</a></p></header>
+    <ul class="s-reviews">
+      <li><blockquote>«Посещаю клуб Астрея. Отличное место для поддержания здоровья и хорошего настроения! Атмосфера очень дружелюбная, чувствуется забота о каждом клиенте. Руководитель Ирина всегда готова помочь, ответить на вопросы и подобрать индивидуальный план занятий. Особенно радует многообразие программ: йога релакс, пилатес, здоровая спина, восточные танцы.»</blockquote><p class="s-reviews__who">Светлана Г</p></li>
+      <li><blockquote>«Замечательный и очень комфортный фитнес клуб, с уютной и доброжелательной атмосферой! Есть все необходимое для занятий, с собой ничего носить не нужно. Тренировки разные, можно выбрать, что понравилось и ходить хоть каждый день. Администраторы всегда встречают с улыбкой. Ирина Викторовна на 150% профи в своем деле. Однозначно, рекомендую!»</blockquote><p class="s-reviews__who">Оксана Ляхова</p></li>
+      <li><blockquote>«Занимаюсь в этом клубе с 2008 года после операции на колене и ахилле. Ирина, грамотный тренер, профессионал. Занятия на разные вкусы и возможности: пилатес и ЛФК, программы всегда разные, на гибкость, на силу, на баланс. Занятия в мини-группах по 4–5 человек, очень комфортно. Рекомендую!»</blockquote><p class="s-reviews__who">Инга М.</p></li>
+    </ul>
+    <p class="s-note">Отзывы с карточки на Яндекс.Картах, без правок.</p>
+  </section>
+
+  <section class="s-section s-reveal">
+    <header class="s-section__head"><h2>Частые вопросы</h2></header>
+    <div class="s-faq"><details><summary>Как записаться на занятие?</summary><p>Выберите услугу и напишите нам или позвоните, подтвердим время и ответим на вопросы.</p></details><details><summary>Сколько стоит абонемент?</summary><p>Разовое занятие 600 ₽, абонементы на 4, 8 и 12 занятий в месяц от 1 800 до 3 800 ₽, есть безлимитный и семейный.</p></details><details><summary>Есть ли массаж?</summary><p>Да, ручной и аппаратный массаж, кедровая бочка и LPG. Продолжительность массажа 1 или 2 часа.</p></details><details><summary>Когда вы работаете?</summary><p>Мы работаем с понедельника по пятницу с 8:00 до 21:00, в субботу и воскресенье с 9:00 до 12:00. Адрес: Бердск, Промышленный переулок, 2А.</p></details></div>
+  </section>
+
+  <section class="s-section s-final s-reveal" id="contacts">
+    <header class="s-section__head"><h2>Запишитесь на удобное время</h2></header>
+    <div class="s-contacts">
+      <dl>
+        <div><dt>Адрес</dt><dd>Промышленный пер., 2А, Бердск</dd></div>
+        <div><dt>Часы</dt><dd>Пн–Пт 8:00–21:00, Сб–Вс 9:00–12:00</dd></div>
+        <div><dt>Телефон</dt><dd><a href="tel:+79232387361">+7 (923) 238-73-61</a></dd></div>
+      </dl>
+      <div class="s-contacts__actions">
+        <a class="s-btn" href="#widget">Записаться</a>
+        <a class="s-btn s-btn--ghost" href="https://vk.ru/astreyafitness" target="_blank" rel="noopener">ВКонтакте</a>
+        
+      </div>
+    </div>
+  </section>
+</main>
+<!-- agent-widget -->
+<div class="agent-wrap">
+  <div class="aichat" id="aichat" role="dialog" aria-modal="false" aria-label="Пример диалога с ИИ-продавцом" hidden>
+    <div class="aichat__head">
+      <img src="assets/agent.webp" alt="" width="40" height="40">
+      <div class="aichat__who"><b>Администратор Астреи</b><span><i></i>онлайн, отвечу за секунды</span></div>
+      <button class="aichat__close" id="aichat-close" type="button" aria-label="Закрыть чат">×</button>
+    </div>
+    <div class="aichat__body" id="aichat-body"></div>
+    <div class="aichat__typing" id="aichat-typing" hidden><span></span><span></span><span></span></div>
+    <form class="aichat__input" id="aichat-form">
+      <input type="text" placeholder="Сообщение…" aria-label="Сообщение (демо)" disabled>
+      <button type="submit" aria-label="Отправить (демо)" tabindex="-1">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+    <p class="aichat__note">Демо: виджет подключён к CRM, диалог и заявка падают в воронку автоматически</p>
+  </div>
+  <button class="agent" id="agent-toggle" type="button" aria-label="Открыть чат с ИИ-продавцом: отвечаем сразу, круглосуточно" aria-expanded="false">
+    <span class="agent__bubble"><b>Отвечаем сразу</b><span>круглосуточно, администратор на связи</span></span>
+    <span class="agent__photo"><img src="assets/agent.webp" alt="" width="64" height="64" loading="lazy"><i aria-hidden="true"></i><b aria-hidden="true">24/7</b></span>
+  </button>
+</div>
+<!-- /agent-widget -->
+<footer class="s-foot"><p>Астрея · Бердск</p><p>Фитнес-студия</p></footer>
+<nav class="s-dock" aria-label="Быстрая связь"><a class="s-btn" href="#widget">Записаться</a><a class="s-btn s-btn--ghost" href="tel:+79232387361">Позвонить</a></nav>
+<script src="style.js" defer></script>
+<script>
+/* ---------- чат ИИ-продавца: пример диалога (фитнес-студия) --------------- */
+const DIALOGUE = [
+  { from: "bot",  text: "Здравствуйте! Это фитнес-студия «Астрея» в Бердске. Помогу с абонементом и расписанием. Как могу к вам обращаться?" },
+  { from: "user", text: "Ольга" },
+  { from: "bot",  text: "Приятно познакомиться, Ольга! Что вас интересует: групповые занятия или массаж?" },
+  { from: "user", text: "Сколько стоит абонемент?" },
+  { from: "bot",  text: "Разовое занятие 600 ₽. Абонементы: 4 занятия 1 800 ₽, 8 занятий 3 000 ₽, 12 занятий 3 800 ₽. Есть безлимитный «Абсолют» за 5 500 ₽. Подскажу, какой выгоднее под ваш график." },
+  { from: "user", text: "А массаж сколько стоит?" },
+  { from: "bot",  text: "Массаж 1 час 1 500 ₽, 2 часа 3 000 ₽. Ещё у нас кедровая бочка от 600 ₽ и LPG-массаж 6 000 ₽." },
+  { from: "user", text: "Когда вы работаете?" },
+  { from: "bot",  text: "Понедельник–пятница 8:00–21:00, суббота и воскресенье 9:00–12:00. Мы на Промышленном пер., 2А." },
+  { from: "user", text: "Я новичок, это нормально?" },
+  { from: "bot",  text: "Конечно! Занятия идут в мини-группах по 4–5 человек, а можно начать с персональной тренировки: инструктор подберёт нагрузку под ваш уровень." },
+  { from: "bot",  text: "Оставьте номер телефона – вышлю расписание занятий и виды абонементов с ценами." },
+  { from: "user", text: "+7 913 000-00-00" },
+  { from: "bot",  text: "Готово, Ольга! В течение 15 минут пришлю вам расписание и цены в сообщении. До встречи в «Астрее»!" },
+];
+const aichat = document.getElementById("aichat");
+const aichatBody = document.getElementById("aichat-body");
+const aichatTyping = document.getElementById("aichat-typing");
+const agentToggle = document.getElementById("agent-toggle");
+let chatPlayed = false, chatTimers = [];
+function addMsg(m) {
+  const el = document.createElement("div");
+  el.className = "msg msg--" + m.from;
+  el.textContent = m.text;
+  aichatBody.appendChild(el);
+  aichatBody.scrollTop = aichatBody.scrollHeight;
+}
+function playDialogue() {
+  chatTimers.forEach(clearTimeout);
+  chatTimers = [];
+  aichatBody.innerHTML = "";
+  let delay = 350;
+  DIALOGUE.forEach(m => {
+    if (m.from === "bot") {
+      chatTimers.push(setTimeout(() => { aichatTyping.hidden = false; }, delay));
+      delay += 700 + Math.min(m.text.length * 8, 1200);
+      chatTimers.push(setTimeout(() => { aichatTyping.hidden = true; addMsg(m); }, delay));
+    } else {
+      chatTimers.push(setTimeout(() => addMsg(m), delay));
+    }
+    delay += 500;
+  });
+}
+let lastToggle = 0;
+agentToggle.addEventListener("click", () => {
+  const now = Date.now();
+  if (now - lastToggle < 900) return;
+  lastToggle = now;
+  const open = aichat.hidden;
+  aichat.hidden = !open;
+  agentToggle.setAttribute("aria-expanded", String(open));
+  if (open) { if (!chatPlayed) { playDialogue(); chatPlayed = true; } }
+  else { chatTimers.forEach(clearTimeout); aichatTyping.hidden = true; }
+});
+document.getElementById("aichat-close").addEventListener("click", () => {
+  aichat.hidden = true;
+  agentToggle.setAttribute("aria-expanded", "false");
+  chatTimers.forEach(clearTimeout);
+  aichatTyping.hidden = true;
+});
+document.getElementById("aichat-form").addEventListener("submit", e => e.preventDefault());
+/* кружок прячется, пока на экране форма записи (не наезжает на неё) */
+(function () {
+  var wrap = document.querySelector('.agent-wrap'), w = document.getElementById('widget');
+  if (!wrap || !w || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (es) { wrap.classList.toggle('is-away', es[0].isIntersecting); }, { rootMargin: '0px 0px -90px 0px' }).observe(w);
+})();
+</script>
+</body>
+</html>
