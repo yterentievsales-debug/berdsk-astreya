@@ -228,103 +228,11 @@
     </div>
   </section>
 </main>
-<!-- agent-widget -->
-<div class="agent-wrap">
-  <div class="aichat" id="aichat" role="dialog" aria-modal="false" aria-label="Пример диалога с ИИ-продавцом" hidden>
-    <div class="aichat__head">
-      <img src="assets/agent.webp" alt="" width="40" height="40">
-      <div class="aichat__who"><b>Администратор Астреи</b><span><i></i>онлайн, отвечу за секунды</span></div>
-      <button class="aichat__close" id="aichat-close" type="button" aria-label="Закрыть чат">×</button>
-    </div>
-    <div class="aichat__body" id="aichat-body"></div>
-    <div class="aichat__typing" id="aichat-typing" hidden><span></span><span></span><span></span></div>
-    <form class="aichat__input" id="aichat-form">
-      <input type="text" placeholder="Сообщение…" aria-label="Сообщение (демо)" disabled>
-      <button type="submit" aria-label="Отправить (демо)" tabindex="-1">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
-      </button>
-    </form>
-    <p class="aichat__note">Демо: виджет подключён к CRM, диалог и заявка падают в воронку автоматически</p>
-  </div>
-  <button class="agent" id="agent-toggle" type="button" aria-label="Открыть чат с ИИ-продавцом: отвечаем сразу, круглосуточно" aria-expanded="false">
-    <span class="agent__bubble"><b>Отвечаем сразу</b><span>круглосуточно, администратор на связи</span></span>
-    <span class="agent__photo"><img src="assets/agent.webp" alt="" width="64" height="64" loading="lazy"><i aria-hidden="true"></i><b aria-hidden="true">24/7</b></span>
-  </button>
-</div>
-<!-- /agent-widget -->
 <footer class="s-foot"><p>Астрея · Бердск</p><p>Фитнес-студия</p></footer>
 <nav class="s-dock" aria-label="Быстрая связь"><a class="s-btn" href="#widget">Записаться</a><a class="s-btn s-btn--ghost" href="tel:+79232387361">Позвонить</a></nav>
 <script src="style.js" defer></script>
-<script>
-/* ---------- чат ИИ-продавца: пример диалога (фитнес-студия) --------------- */
-const DIALOGUE = [
-  { from: "bot",  text: "Здравствуйте! Это фитнес-студия «Астрея» в Бердске. Помогу с абонементом и расписанием. Как могу к вам обращаться?" },
-  { from: "user", text: "Ольга" },
-  { from: "bot",  text: "Приятно познакомиться, Ольга! Что вас интересует: групповые занятия или массаж?" },
-  { from: "user", text: "Сколько стоит абонемент?" },
-  { from: "bot",  text: "Разовое занятие 600 ₽. Абонементы: 4 занятия 1 800 ₽, 8 занятий 3 000 ₽, 12 занятий 3 800 ₽. Есть безлимитный «Абсолют» за 5 500 ₽. Подскажу, какой выгоднее под ваш график." },
-  { from: "user", text: "А массаж сколько стоит?" },
-  { from: "bot",  text: "Массаж 1 час 1 500 ₽, 2 часа 3 000 ₽. Ещё у нас кедровая бочка от 600 ₽ и LPG-массаж 6 000 ₽." },
-  { from: "user", text: "Когда вы работаете?" },
-  { from: "bot",  text: "Понедельник–пятница 8:00–21:00, суббота и воскресенье 9:00–12:00. Мы на Промышленном пер., 2А." },
-  { from: "user", text: "Я новичок, это нормально?" },
-  { from: "bot",  text: "Конечно! Занятия идут в мини-группах по 4–5 человек, а можно начать с персональной тренировки: инструктор подберёт нагрузку под ваш уровень." },
-  { from: "bot",  text: "Оставьте номер телефона – вышлю расписание занятий и виды абонементов с ценами." },
-  { from: "user", text: "+7 913 000-00-00" },
-  { from: "bot",  text: "Готово, Ольга! В течение 15 минут пришлю вам расписание и цены в сообщении. До встречи в «Астрее»!" },
-];
-const aichat = document.getElementById("aichat");
-const aichatBody = document.getElementById("aichat-body");
-const aichatTyping = document.getElementById("aichat-typing");
-const agentToggle = document.getElementById("agent-toggle");
-let chatPlayed = false, chatTimers = [];
-function addMsg(m) {
-  const el = document.createElement("div");
-  el.className = "msg msg--" + m.from;
-  el.textContent = m.text;
-  aichatBody.appendChild(el);
-  aichatBody.scrollTop = aichatBody.scrollHeight;
-}
-function playDialogue() {
-  chatTimers.forEach(clearTimeout);
-  chatTimers = [];
-  aichatBody.innerHTML = "";
-  let delay = 350;
-  DIALOGUE.forEach(m => {
-    if (m.from === "bot") {
-      chatTimers.push(setTimeout(() => { aichatTyping.hidden = false; }, delay));
-      delay += 700 + Math.min(m.text.length * 8, 1200);
-      chatTimers.push(setTimeout(() => { aichatTyping.hidden = true; addMsg(m); }, delay));
-    } else {
-      chatTimers.push(setTimeout(() => addMsg(m), delay));
-    }
-    delay += 500;
-  });
-}
-let lastToggle = 0;
-agentToggle.addEventListener("click", () => {
-  const now = Date.now();
-  if (now - lastToggle < 900) return;
-  lastToggle = now;
-  const open = aichat.hidden;
-  aichat.hidden = !open;
-  agentToggle.setAttribute("aria-expanded", String(open));
-  if (open) { if (!chatPlayed) { playDialogue(); chatPlayed = true; } }
-  else { chatTimers.forEach(clearTimeout); aichatTyping.hidden = true; }
-});
-document.getElementById("aichat-close").addEventListener("click", () => {
-  aichat.hidden = true;
-  agentToggle.setAttribute("aria-expanded", "false");
-  chatTimers.forEach(clearTimeout);
-  aichatTyping.hidden = true;
-});
-document.getElementById("aichat-form").addEventListener("submit", e => e.preventDefault());
-/* кружок прячется, пока на экране форма записи (не наезжает на неё) */
-(function () {
-  var wrap = document.querySelector('.agent-wrap'), w = document.getElementById('widget');
-  if (!wrap || !w || !('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (es) { wrap.classList.toggle('is-away', es[0].isIntersecting); }, { rootMargin: '0px 0px -90px 0px' }).observe(w);
-})();
-</script>
+<!-- Noya AI Chat Widget -->
+<noya-chat api-key="wgt_11f4d17bceebca583bfba5f2b9ecefb70698dc53463cb549" lang="ru"></noya-chat>
+<script src="https://noya-ai.ru/widget.js" defer></script>
 </body>
 </html>
