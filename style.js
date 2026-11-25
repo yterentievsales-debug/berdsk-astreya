@@ -45,6 +45,10 @@
     try { await navigator.clipboard.writeText(message); } catch (_) {}
     const note = a.closest("form, .s-contacts")?.parentElement?.querySelector("[data-s-copied]") || document.querySelector("[data-s-copied]");
     if (note) { note.hidden = false; setTimeout(() => (note.hidden = true), 4000); }
+    if (kind === "max") {
+      window.open(body.dataset.max || "https://max.ru/", "_blank", "noopener");
+      return;
+    }
     const tg = body.dataset.tg; const user = isSlot(tg) ? "" : String(tg).replace(/^@|https?:\/\/t\.me\//g, "");
     window.open("https://t.me/" + user, "_blank", "noopener");
   });
