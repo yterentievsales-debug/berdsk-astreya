@@ -134,3 +134,25 @@
     calc.addEventListener("input", update); calc.addEventListener("change", update); update();
   }
 })();
+
+/* Фото Ирины в кнопке Noya AI (shadow DOM виджета) */
+(() => {
+  const setPhoto = () => {
+    const host = document.querySelector("noya-chat");
+    const sr = host && host.shadowRoot;
+    if (!sr) return false;
+    if (sr.querySelector("#irina-launcher-style")) return true;
+    const style = document.createElement("style");
+    style.id = "irina-launcher-style";
+    const url = new URL("assets/agent.webp", location.href).href;
+    style.textContent = `.launcher{background-image:url("${url}")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important}.launcher svg{display:none!important}`;
+    sr.appendChild(style);
+    return true;
+  };
+  let tries = 0;
+  const timer = setInterval(() => {
+    if (setPhoto() || ++tries > 60) clearInterval(timer);
+  }, 200);
+  setPhoto();
+  new MutationObserver(() => setPhoto()).observe(document.documentElement, { childList: true, subtree: true });
+})();
