@@ -144,8 +144,8 @@
     if (sr.querySelector("#irina-launcher-style")) return true;
     const style = document.createElement("style");
     style.id = "irina-launcher-style";
-    const url = new URL("assets/agent.webp?v=20261126b", location.href).href;
-    style.textContent = `.launcher{background-image:url("${url}")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important}.launcher svg{display:none!important}`;
+    const url = new URL("assets/agent.webp?v=20261126d", location.href).href;
+    style.textContent = `.launcher{background-image:url("${url}")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important;box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,.55)!important;animation:irina-ring 2s ease-out infinite!important}.launcher svg{display:none!important}@keyframes irina-ring{0%{box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,.55)}70%{box-shadow:0 0 0 3px #006CBE,0 0 0 14px rgba(0,108,190,0)}100%{box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,0)}}`;
     sr.appendChild(style);
     return true;
   };
