@@ -144,7 +144,7 @@
     if (sr.querySelector("#irina-launcher-style")) return true;
     const style = document.createElement("style");
     style.id = "irina-launcher-style";
-    const url = new URL("assets/agent.webp", location.href).href;
+    const url = new URL("assets/agent.webp?v=20261126b", location.href).href;
     style.textContent = `.launcher{background-image:url("${url}")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important}.launcher svg{display:none!important}`;
     sr.appendChild(style);
     return true;
