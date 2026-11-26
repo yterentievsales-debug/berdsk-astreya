@@ -228,3 +228,31 @@ main { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
   .noya-label b { font-size: 12px; }
   .noya-label span { font-size: 10px; }
 }
+
+/* Бесплатное пробное занятие */
+.s-trial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 24px;
+  padding: 18px 22px;
+  border: 1px solid color-mix(in srgb, var(--c-accent) 38%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--c-accent) 8%, var(--c-surface));
+}
+.s-trial__kicker {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--c-accent);
+  font: 700 .75rem/1.2 var(--f-text);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.s-trial h3 { margin: 0 0 4px; font-size: 1.35rem; }
+.s-trial p { margin: 0; color: var(--c-ink-soft); font-size: .92rem; max-width: 46em; }
+.s-trial .s-btn { flex: none; }
+@media (max-width: 640px) {
+  .s-trial { flex-direction: column; align-items: flex-start; padding: 16px; }
+  .s-trial .s-btn { width: 100%; }
+}
