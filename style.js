@@ -146,6 +146,7 @@
     style.id = "irina-launcher-style";
     const url = new URL("assets/agent.webp?v=20261126d", location.href).href;
     style.textContent = `.launcher{background-image:url("${url}")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important;box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,.55)!important;animation:irina-ring 2s ease-out infinite!important}.launcher svg{display:none!important}@keyframes irina-ring{0%{box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,.55)}70%{box-shadow:0 0 0 3px #006CBE,0 0 0 14px rgba(0,108,190,0)}100%{box-shadow:0 0 0 3px #006CBE,0 0 0 0 rgba(0,108,190,0)}}`;
+    style.textContent += ".teaser{display:none!important}";
     sr.appendChild(style);
     return true;
   };
@@ -155,4 +156,19 @@
   }, 200);
   setPhoto();
   new MutationObserver(() => setPhoto()).observe(document.documentElement, { childList: true, subtree: true });
+})();
+
+/* Клик по подписи открывает ассистента Noya */
+(() => {
+  const label = document.querySelector(".noya-label");
+  if (!label) return;
+  const open = () => {
+    const host = document.querySelector("noya-chat");
+    const launcher = host && host.shadowRoot && host.shadowRoot.querySelector(".launcher");
+    if (launcher) launcher.click();
+  };
+  label.addEventListener("click", open);
+  label.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+  });
 })();

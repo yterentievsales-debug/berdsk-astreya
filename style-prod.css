@@ -201,3 +201,30 @@ main { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
   .s-dock .s-btn { flex: 1; min-height: 48px; font-size: .88rem; padding: 0 .9em; white-space: nowrap; }
   .s-dock .s-btn:first-child { flex: 1.7; }
 }
+
+/* Подпись у ассистента Noya */
+.noya-label {
+  position: fixed;
+  right: 92px;
+  bottom: 24px;
+  z-index: 2147483645;
+  display: grid;
+  gap: 2px;
+  padding: 9px 14px;
+  border-radius: 16px 16px 4px 16px;
+  background: #fff;
+  color: var(--c-ink, #1f2a1e);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .18), 0 0 0 1px rgba(15, 23, 42, .06);
+  font-family: var(--f-text, "IBM Plex Sans", sans-serif);
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+}
+.noya-label b { font-size: 13px; font-weight: 700; }
+.noya-label span { font-size: 11px; color: var(--c-ink-soft, #6b7265); }
+.noya-label:focus-visible { outline: 2px solid #006CBE; outline-offset: 3px; }
+@media (max-width: 640px) {
+  .noya-label { right: 16px; bottom: 88px; padding: 8px 12px; border-radius: 14px 14px 4px 14px; }
+  .noya-label b { font-size: 12px; }
+  .noya-label span { font-size: 10px; }
+}
